@@ -59,4 +59,4 @@ if __name__ == "__main__":
 """.format(args.path, args.skel3d, args.out, 
     args.model, args.gender, args.body)
     print(help)
-    smpl_from_skel(args.path, args.sub, args.out, args.skel3d, args)
+    smpl_from_skel(args.path, args.sub, args.out, args.skel3d, args=args)

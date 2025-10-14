@@ -26,7 +26,7 @@ def multi_stage_optimize(body_model, params, kp3ds, kp2ds=None, bboxes=None, Pal
             params = optimizePose3D(body_model, params, kp3ds, weight=weight, cfg=cfg)
         if cfg.model in ['smplh', 'smplx']:
             cfg.OPT_HAND = True
-            params = optimizePose3D(body_model, params, kp3ds, weight=weight, cfg=cfg)
+            params = optimizePose3D(body_model, params, keypoints3d=kp3ds, weight=weight, cfg=cfg)
         if cfg.model == 'smplx':
             cfg.OPT_EXPR = True
             params = optimizePose3D(body_model, params, kp3ds, weight=weight, cfg=cfg)

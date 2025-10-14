@@ -12,7 +12,14 @@ class Config:
     model = 'smpl'
     device = None
     def __init__(self, args=None) -> None:
+        
         if args is not None:
-            self.verbose = args.verbose
-            self.model = args.model
-            self.ROBUST_3D_ = args.robust3d
+            if isinstance(args, dict):
+                self.verbose = args.get('verbose', False)
+                self.model = args.get('model', 'smpl')
+                self.ROBUST_3D_ = args.get('robust3d', False)
+                self.device = args.get('device', 'cpu')
+            else:
+                self.verbose = args.verbose
+                self.model = args.model
+                self.ROBUST_3D_ = args.robust3d
