@@ -116,3 +116,10 @@ code
 lightning_logs
 models
 yolov5m.pt
+
+
+test_video
+shl_bathroom
+test_smpl
+test*
+shl*

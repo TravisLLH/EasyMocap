@@ -36,7 +36,7 @@ def SimpleConstrain(dimGroups):
     constrain[range(N), range(N)] = 1
     return constrain
 
-class ComposedAffinity:
+class  ComposedAffinity:
     def __init__(self, cameras, basenames, cfg):
         affinity = {}
         for key, args in cfg.aff_funcs.items():

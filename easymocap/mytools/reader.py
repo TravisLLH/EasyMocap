@@ -91,6 +91,7 @@ def read_keypoints3d_all(path, key='keypoints3d', pids=[]):
     for filename in filenames:
         nf = int(os.path.basename(filename).replace('.json', ''))
         datas = read_keypoints3d(filename)
+
         for data in datas:
             pid = data['id']
             if len(pids) > 0 and pid not in pids:
@@ -100,6 +101,7 @@ def read_keypoints3d_all(path, key='keypoints3d', pids=[]):
                 results[pid] = {key: [], 'frames': []}
             results[pid][key].append(data[key])
             results[pid]['frames'].append(nf)
+            
     if key == 'keypoints3d':
         for pid, result in results.items():
             result[key] = np.stack(result[key])

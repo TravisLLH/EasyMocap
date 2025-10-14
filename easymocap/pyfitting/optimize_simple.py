@@ -28,9 +28,9 @@ def optimizeShape(body_model, body_params, keypoints3d,
     # 计算不同的骨长
     kintree = np.array(kintree, dtype=int)
     # limb_length: nFrames, nLimbs, 1
-    limb_length = np.linalg.norm(keypoints3d[:, kintree[:, 1], :3] - keypoints3d[:, kintree[:, 0], :3], axis=2, keepdims=True)
+    limb_length = torch.linalg.norm(keypoints3d[:, kintree[:, 1], :3] - keypoints3d[:, kintree[:, 0], :3], dim=2, keepdims=True)
     # conf: nFrames, nLimbs, 1
-    limb_conf = np.minimum(keypoints3d[:, kintree[:, 1], 3:], keypoints3d[:, kintree[:, 0], 3:])
+    limb_conf = torch.minimum(keypoints3d[:, kintree[:, 1], 3:], keypoints3d[:, kintree[:, 0], 3:])
     limb_length = torch.Tensor(limb_length).to(device)
     limb_conf = torch.Tensor(limb_conf).to(device)
     body_params = {key:torch.Tensor(val).to(device) for key, val in body_params.items()}
